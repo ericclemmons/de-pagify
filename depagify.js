@@ -1,7 +1,7 @@
 var depagify = (function() {
     site = null;
     
-    var rulesUrl    =   'http://de-pagify.projects.uxdriven.com/sites.js',
+    var rulesUrl    =   'http://uxdriven.com/static/js/jquery/de-pagify/sites.js',
         jQueryUrl   =   'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js',
         attempts    =   0,
         options     =   {

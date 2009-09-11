@@ -4,7 +4,7 @@
         delay    = 250;
         
     var dp = document.createElement('script');
-    dp.setAttribute('src', 'http://de-pagify.projects.uxdriven.com/depagify.js');
+    dp.setAttribute('src', 'http://uxdriven.com/static/js/jquery/de-pagify/depagify.js');
     document.getElementsByTagName('head')[0].appendChild(dp);
     
     var checkForDepagify = function() {
@@ -14,7 +14,7 @@
                 return false;
             }
             
-            if (typeof jQuery === 'undefined') {
+            if (typeof depagify === 'undefined') {
                 checkForDepagify();
             } else {
                 depagify.init();
