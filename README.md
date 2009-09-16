@@ -4,6 +4,10 @@ De-pagify let's you easily enable [endless scroll][el] for paged sites such as
 [fmylife][fml], [digg][digg], [failblog][fb] to enable functionality similar to
 [Bing image search][bing].
 
+You can find this plugin at
+<a href="http://plugins.jquery.com/project/de-pagify">http://plugins.jquery.com/project/de-pagify</a>
+or view latest code &amp; documentation is available at
+<a href="http://github.com/ericclemmons/de-pagify">http://github.com/ericclemmons/de-pagify</a>.
 
 ## Demo
 
@@ -14,16 +18,7 @@ De-pagify let's you easily enable [endless scroll][el] for paged sites such as
 Typical usage will follow the pattern:
     
     jQuery(link).depagify(options);
-
-## Recipes
-
-Here are a couple popular, ready-to-go bookmarklets you can inject into everyday
-websites.  Keep in mind you may need to either inject jQuery with a bookmarklet
-([link][jq]) and the [De-pagify][dpbm] bookmarklet.
-
-* [Digg.com][diggbm] ([source][diggbmsource])
-* [FMyLife.com][fmlbm] ([source][fmlbmsource])
-
+    
 
 ### Options
 
@@ -53,6 +48,17 @@ content or messaging the user.
 
 * __effect__:  (_defaults to `$(this).show()`_) Function to transition newly
 loaded content.  (New content is wrapped by `$('<div />).hide()`)
+
+
+## Recipes
+
+Here are a couple popular, ready-to-go bookmarklets you can inject into everyday
+websites.  Keep in mind you may need to either inject jQuery with a bookmarklet
+([link][jq]) and the [De-pagify][dpbm] bookmarklet.
+
+* [Digg.com][diggbm] ([source][diggbmsource])
+* [FMyLife.com][fmlbm] ([source][fmlbmsource])
+
 
 ## Examples
 
