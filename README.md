@@ -120,5 +120,5 @@ If you can help in any way, please fork this project or provide feedback.
 
 [fmlbm]:    http://uxdriven.com/static/js/uxdriven/jquery/de-pagify/recipes/fmylife.bookmarklet.js
 [fmlbmsource]:    http://uxdriven.com/static/js/uxdriven/jquery/de-pagify/recipes/fmylife.js
-[fmlbm]:    http://uxdriven.com/static/js/uxdriven/jquery/de-pagify/recipes/digg.bookmarklet.js
-[fmlbmsource]:    http://uxdriven.com/static/js/uxdriven/jquery/de-pagify/recipes/digg.js
+[diggbm]:    http://uxdriven.com/static/js/uxdriven/jquery/de-pagify/recipes/digg.bookmarklet.js
+[diggbmsource]:    http://uxdriven.com/static/js/uxdriven/jquery/de-pagify/recipes/digg.js
