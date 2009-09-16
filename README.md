@@ -16,7 +16,7 @@ Here are a couple popular, ready-to-go bookmarklets you can inject into everyday
 websites.  Keep in mind you may need to either inject jQuery with a bookmarklet
 ([link][jq]) and the [De-pagify][dpbm] bookmarklet.
 
-* [FMyLife.com][fmlbm] ([source][fmlbmsource])
+* <a href="javascript:%20jQuery('.pagination:last%20a:last').depagify({trigger:'#footer',container:'#wrapper',effect:function(){jQuery(this).fadeIn('slow');},request:function(options){jQuery('.pagination',options.container).remove();},success:function(event,options){jQuery('#ad_leaderboard',options.container).remove();}});">FMyLife.com</a> ([source][fmlbmsource])
 
 ### Options
 
@@ -24,23 +24,28 @@ Where _linkSelector_ matches the "Next Page" link and _options_ can override
 any of the following:
 
 * __container__: (_defaults to `body`_) Where content is appended and where
-                 remote content comes from
+remote content comes from
+
 * __filter__: (_defaults to `null`_) Selector or function to filter remote content
+
 * __trigger__: (_defaults to `0.90`_) Float, integer, string or function to
-               determine when to load remote content.
-               The default is `0.90`, which is `90%`.
-               You can use `167`, for example, to load content when the user
-               scrolls within `167px` of the bottom of the page.
-               Also, you can specify a selector (such as `#footer`) to load
-               content when the `#footer` element scrolls into view.
-               Finally, you can write your own function that returns `true`
-               whenever you'd like load the next page's content.
+determine when to load remote content.
+The default is `0.90`, which is `90%`.
+You can use `167`, for example, to load content when the user
+scrolls within `167px` of the bottom of the page.
+Also, you can specify a selector (such as `#footer`) to load
+content when the `#footer` element scrolls into view.
+Finally, you can write your own function that returns `true`
+whenever you'd like load the next page's content.
+
 * __request__: Callback when content is being requested.  Useful for cleaning up
-               the page or providing UI feedback.
+the page or providing UI feedback.
+
 * __success__: Callback when content is appended.  Useful for cleaning up new
-               content or messaging the user.
+content or messaging the user.
+
 * __effect__:  (_defaults to `$(this).show()`_) Function to transition newly
-               loaded content.  (New content is wrapped by `$('<div />).hide()`)
+loaded content.  (New content is wrapped by `$('<div />).hide()`)
 
 ## Examples
 
