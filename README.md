@@ -20,7 +20,7 @@ websites.  Keep in mind you may need to either inject jQuery with a bookmarklet
 
 ### Options
 
-Where _linkSelector_ matches the "Next Page" link and _options_ can override
+Where _link_ matches the "Next Page" link and _options_ can override
 any of the following:
 
 * __container__: (_defaults to `body`_) Where content is appended and where
