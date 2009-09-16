@@ -4,6 +4,11 @@ De-pagify let's you easily enable [endless scroll][el] for paged sites such as
 [fmylife][fml], [digg][digg], [failblog][fb] to enable functionality similar to
 [Bing image search][bing].
 
+
+## Demo
+
+[View Demo][demo]
+
 ## Usage
 
 Typical usage will follow the pattern:
@@ -109,6 +114,8 @@ in the `success` callback, but for this example I separated the two.
 ## Conclusion
 
 If you can help in any way, please fork this project or provide feedback.
+
+[demo]: http://uxdriven.com/static/js/uxdriven/jquery/de-pagify/demo.php "De-Pagify Demo"
 
 [el]:   http://uipatternfactory.com/p=endless-scrolling/ "Endless Scroll"
 [fml]:  http://www.fmylife.com "F My Life"
