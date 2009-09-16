@@ -16,7 +16,9 @@ Here are a couple popular, ready-to-go bookmarklets you can inject into everyday
 websites.  Keep in mind you may need to either inject jQuery with a bookmarklet
 ([link][jq]) and the [De-pagify][dpbm] bookmarklet.
 
+* [Digg.com][diggbm] ([source][diggbmsource])
 * [FMyLife.com][fmlbm] ([source][fmlbmsource])
+
 
 ### Options
 
@@ -118,3 +120,5 @@ If you can help in any way, please fork this project or provide feedback.
 
 [fmlbm]:    http://uxdriven.com/static/js/uxdriven/jquery/de-pagify/recipes/fmylife.bookmarklet.js
 [fmlbmsource]:    http://uxdriven.com/static/js/uxdriven/jquery/de-pagify/recipes/fmylife.js
+[fmlbm]:    http://uxdriven.com/static/js/uxdriven/jquery/de-pagify/recipes/digg.bookmarklet.js
+[fmlbmsource]:    http://uxdriven.com/static/js/uxdriven/jquery/de-pagify/recipes/digg.js
