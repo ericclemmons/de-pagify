@@ -16,7 +16,7 @@ Here are a couple popular, ready-to-go bookmarklets you can inject into everyday
 websites.  Keep in mind you may need to either inject jQuery with a bookmarklet
 ([link][jq]) and the [De-pagify][dpbm] bookmarklet.
 
-* <a href="javascript:%20jQuery('.pagination:last%20a:last').depagify({trigger:'#footer',container:'#wrapper',effect:function(){jQuery(this).fadeIn('slow');},request:function(options){jQuery('.pagination',options.container).remove();},success:function(event,options){jQuery('#ad_leaderboard',options.container).remove();}});">FMyLife.com</a> ([source][fmlbmsource])
+* [FMyLife.com][fmlbm] ([source][fmlbmsource])
 
 ### Options
 
