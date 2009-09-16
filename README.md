@@ -52,7 +52,7 @@ loaded content.  (New content is wrapped by `$('<div />).hide()`)
 To play around with de-pagify, you should probably get the
 [jQuerify Bookmarklet][jq] which will inject jQuery into the page.
 
-Secondly, take advantage of the <a href="javascript:;(function($){var%20attempts=0,limit=10,delay=250;var%20dp=document.createElement('script');dp.setAttribute('src','http://uxdriven.com/static/js/uxdriven/jquery/de-pagify/depagify.jquery.js');document.getElementsByTagName('head')[0].appendChild(dp);var%20checkForDepagify=function(){setTimeout(function(){if(++attempts===limit){alert('Could%20not%20load%20De-Pagify%20after%20'+attempts+'%20attempts.');return%20false;}%20if(typeof%20$.fn.depagify==='undefined'){checkForDepagify();}else{$('<div>De-Pagify%20Loaded!</div>').css({'position':'fixed','display':'inline','top':'1em','right':'1em','padding':'2em','color':'white','border':'0.25em%20solid%20rgba(100%,%20100%,%20100%,%200.25)','background':'#000','-moz-box-shadow':'0%200.25em%201em%20rgba(0,%200,%200,%200.5)','-webkit-box-shadow':'0%200.25em%201em%20rgba(0,%200,%200,%200.5)','-moz-border-radius':'1em','-webkit-border-radius':'1em'}).hide().appendTo('body').fadeIn('slow').animate({opacity:1.0},3000).fadeOut('slow',function(){$(this).remove();});}},delay);};checkForDepagify();})(jQuery);">De-Pagify Bookmarklet</a> ([source][dpbm])
+Secondly, take advantage of the [De-Pagify Bookmarklet][dpbm]
 
 ### Example 1:  FMyLife.com
 
