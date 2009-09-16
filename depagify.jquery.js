@@ -234,12 +234,13 @@
                          .load(url, loaded);
     };
     
-    var loaded = function(event) {
+    var loaded = function(responseText, status, event) {
         // Reveal content
         options.effect.call(this);
         
         // Re-assign current "Next" link
-        next = $(this).find(next.selector);
+        next = $("<div />").append(responseText.replace(/<script(.|\s)*?\/script>/g, ""))
+                           .find(next.selector);
         
         // Call success hook
         options.success.apply(next, [event, options]);
