@@ -1,5 +1,5 @@
 <?php
-    $page = $_SERVER['QUERY_STRING'];
+    $page = (int) $_SERVER['QUERY_STRING'];
     
     if (empty($page)) {
         $page = 1;
