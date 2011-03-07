@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="http://uxdriven.com/static/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
     
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js" type="text/javascript" charset="utf-8"></script>
-    <script src="./depagify.jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://github.com/ericclemmons/de-pagify/raw/master/depagify.jquery.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" charset="utf-8">
         var depagify = function() {
             jQuery('#content').depagify('#pages a:last', {
