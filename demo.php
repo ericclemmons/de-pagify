@@ -18,18 +18,22 @@
     <link rel="stylesheet" href="http://uxdriven.com/static/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
     
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js" type="text/javascript" charset="utf-8"></script>
-    <script src="http://uxdriven.com/static/js/uxdriven/jquery/de-pagify/depagify.jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./depagify.jquery.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" charset="utf-8">
         var depagify = function() {
-            jQuery('#pages a:last').depagify({
-                container:  '#content',
-                filter:     '.post',
-                trigger:    '#footer',
-                request:    function(options) {
-                    jQuery('#pages', options.container).remove();
-                },
-                effect:     function() {
-                    jQuery(this).fadeIn('slow');
+            jQuery('#content').depagify('#pages a:last', {
+                delay:      500,        // Wait 500ms between subsequent requests
+                filter:     '.post',    // Only include .post objects
+                threshold:  '#footer',  // When #footer is in view
+                effect:     jQuery(this).slideDown,
+                events: {
+                    request:    function() {
+                        // Remove the navigation
+                        jQuery('#pages', this).remove();
+                    },
+                    success:    function() {
+                        console.log('Another page loaded!');
+                    }
                 }
             });
         };

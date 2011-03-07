@@ -1,121 +1,51 @@
-# De-Pagify
+# De-Pagify v2.0
 
 De-pagify let's you easily enable [endless scroll][el] for paged sites such as
 [fmylife][fml], [digg][digg], [failblog][fb] to enable functionality similar to
-[Bing image search][bing].
+[Bing image search][bing] on any site that has a *More &raquo;*, *Next &raquo;*
+or similar link.
 
-You can find this plugin at
-<a href="http://plugins.jquery.com/project/de-pagify">http://plugins.jquery.com/project/de-pagify</a>
-or view latest code &amp; documentation is available at
-<a href="http://github.com/ericclemmons/de-pagify">http://github.com/ericclemmons/de-pagify</a>.
+The latest code & documentation will *always* be available at
+<a href="http://github.com/ericclemmons/de-pagify">http://github.com/ericclemmons/de-pagify</a>,
+but is also available at
+<a href="http://plugins.jquery.com/project/de-pagify">http://plugins.jquery.com/project/de-pagify</a>.
 
-## Demo
 
-[View Demo][demo]
+## [View Demo][demo]
 
 ## Usage
 
 Typical usage will follow the pattern:
     
-    jQuery(link).depagify(options);
+    jQuery(container).depagify(trigger, options);
     
+* __container__:    Container for content on the remote page and where it will be
+                    placed on the local page.
+* __trigger__:      Link to "click" for the next page's content
 
 ### Options
 
-Where _link_ matches the "Next Page" link and _options_ can override
-any of the following:
+* __find__:         (_defaults to `*`_) Selector or function to filter remote content
 
-* __container__: (_defaults to `body`_) Where content is appended and where
-remote content comes from
+* __threshold__:    (_defaults to `0.90`_) Float, integer, string or function to
+                    determine when to load remote content.
+                    The default is `0.90`, which is `90%`.
+                    You can use `167`, for example, to load content when the user
+                    scrolls within `167px` of the bottom of the page.
+                    Also, you can specify a selector (such as `#footer`) to load
+                    content when the `#footer` element scrolls into view.
+                    Finally, you can write your own function that returns `true`
+                    whenever you'd like load the next page's content.
 
-* __filter__: (_defaults to `null`_) Selector or function to filter remote content
+* __effect__:       (_defaults to `$(this).show()`_) Function to transition newly
+                    loaded content.  (New content is wrapped by `$('<div />).hide()`)
 
-* __trigger__: (_defaults to `0.90`_) Float, integer, string or function to
-determine when to load remote content.
-The default is `0.90`, which is `90%`.
-You can use `167`, for example, to load content when the user
-scrolls within `167px` of the bottom of the page.
-Also, you can specify a selector (such as `#footer`) to load
-content when the `#footer` element scrolls into view.
-Finally, you can write your own function that returns `true`
-whenever you'd like load the next page's content.
+* __events__:       `request` & `success` events are triggered before and after the GET request.
 
-* __request__: Callback when content is being requested.  Useful for cleaning up
-the page or providing UI feedback.
+## Bookmarklets
 
-* __success__: Callback when content is appended.  Useful for cleaning up new
-content or messaging the user.
-
-* __effect__:  (_defaults to `$(this).show()`_) Function to transition newly
-loaded content.  (New content is wrapped by `$('<div />).hide()`)
-
-
-## Recipes
-
-Here are a couple popular, ready-to-go bookmarklets you can inject into everyday
-websites.  Keep in mind you may need to either inject jQuery with a bookmarklet
-([link][jq]) and the [De-pagify][dpbm] bookmarklet.
-
-* [Digg.com][diggbm] ([source][diggbmsource])
-* [FMyLife.com][fmlbm] ([source][fmlbmsource])
-
-
-## Examples
-
-To play around with de-pagify, you should probably get the
-[jQuerify Bookmarklet][jq] which will inject jQuery into the page.
-
-Secondly, take advantage of the [De-Pagify Bookmarklet][dpbm]
-
-### Example 1:  FMyLife.com
-
-First & foremost, we can simply enable de-pagify via:
-    
-    jQuery('.pagination:last a:last').depagify({
-        container: '#wrapper',
-    });
-    
-Simply put, `.pagination:last a:last` will grab the last anchor tag in the last
-`.pagination` element on the page.  All new content will be pulled from the remote
-`#wrapper` element and appended to the current `#wrapper` element.
-
-But let's say we want to only load content when the footer comes into view,
-and we'd like a smoother animation instead of showing results immediately:
-    
-    jQuery('.pagination:last a:last').depagify({
-        trigger: '#footer',
-        container: '#wrapper',
-        effect: function() {
-            jQuery(this).fadeIn('slow');
-        }
-    });
-    
-When new content is inserted in the page, it is wrapped in a plain `<div>` to
-simplify DOM manipulation.  This `<div>` is bound to `this` in the `effect`
-callback.
-
-So, we have a pretty nice, smooth experience now.  However, say you want to
-remove the page lists (1, 2, 3, Next, Prev, etc.) and the ads to ensure a more
-consistent experience:
-    
-    jQuery('.pagination:last a:last').depagify({
-        trigger: '#footer',
-        container: '#wrapper',
-        effect: function() {
-            jQuery(this).fadeIn('slow');
-        },
-        request: function(options) {
-            jQuery('.pagination', options.container).remove();
-        },
-        success: function(event, options) {
-            jQuery('#ad_leaderboard', options.container).remove();
-        }
-    });
-    
-The code is self-explanatory.  When we send off the request, we remove the
-`.pagination` element, as it is not needed anymore.  Similarly, when the new
-content is inserted all ads are removed.  Both events could take place entirely
-in the `success` callback, but for this example I separated the two.
+* [jQuerify Bookmarklet][jq] which will inject jQuery into the page
+* [De-pagify][dpbm] bookmarklet
 
 ## Conclusion
 

@@ -4,7 +4,7 @@
         delay    = 250;
         
     var dp = document.createElement('script');
-    dp.setAttribute('src', 'http://uxdriven.com/static/js/uxdriven/jquery/de-pagify/depagify.jquery.js');
+    dp.setAttribute('src', 'https://github.com/ericclemmons/de-pagify/raw/master/depagify.jquery.js');
     document.getElementsByTagName('head')[0].appendChild(dp);
     
     var checkForDepagify = function() {
@@ -26,8 +26,10 @@
                     'color': 'white',
                     'border': '0.25em solid rgba(100%, 100%, 100%, 0.25)',
                     'background': '#000',
+                    'box-shadow': '0 0.25em 1em rgba(0, 0, 0, 0.5)',
                     '-moz-box-shadow': '0 0.25em 1em rgba(0, 0, 0, 0.5)',
                     '-webkit-box-shadow': '0 0.25em 1em rgba(0, 0, 0, 0.5)',
+                    'border-radius': '1em',
                     '-moz-border-radius': '1em',
                     '-webkit-border-radius': '1em'
                 }).hide()

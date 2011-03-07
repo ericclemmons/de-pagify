@@ -1,10 +1,10 @@
 /*
     Script:         depagify.jquery.js
     Author:         eric@uxdriven.com
-    
+    Version:        2.0
     Repository:     http://github.com/ericclemmons/de-pagify
     
-    Copyright (c) 2009 Eric Clemmons
+    Copyright (c) 2011 Eric Clemmons
     
     Dual licensed under the MIT and GPL licenses:
       http://www.opensource.org/licenses/mit-license.php
@@ -12,125 +12,131 @@
 */
 
 ;(function($) {
-    
-    // "Next" link element
-    var next;
-    
+
+    // "Trigger" link element
+    var $trigger = null;
+
     var options = {
-        // Where content is appended and where remote content comes from
-        container:      'body',
-        // Selector or function to only insert certain elements
-        filter:         null,
-        // Request when footer becomes visible...
-        trigger:    '#footer',
-        // or when 167px from the bottom of the page...
-        trigger:    167,
-        // or when custom function returns true...
-        trigger:    function(event) { return true; },
-        // or when user scrolls through 90% of document...
-        trigger:    0.90,
+        // How many milliseconds to wait between subsequent requests (ie, wait for completed animations)
+        delay:      0,
         
-        // Hook before content is requested
-        request:    function(options) {},
-        // Hook after content is appended
-        success:    function(event, options) {},
+        // Selector or function provided to the `filter` function for limiting elements
+        filter:     null,
+        
+        // Request when footer becomes visible...
+        threshold:  '#footer',
+        // or when 167px from the bottom of the page...
+        threshold:  167,
+        // or when custom function returns true...
+        threshold:  function(event) { return true; },
+        // or when user scrolls through 90% of document...
+        threshold:  0.90,
         
         // Effect to reveal new content
-        effect:     function() {
-            $(this).show();
-        }
-    };
-    
-    $.fn.depagify = function(params) {
-        options = $.extend(options, params);
+        effect:     $(this).show,
         
-        // Store "Next" link for private functions
-        next = this;
-        
-        // Monitor scrolling
-        enable();
-        
-        // Allow chaining
-        return next;
+        events:     {}
     };
-    
-    var enable = function() {
-        $(window).bind("scroll", monitor);
+
+    $.fn.depagify = function(t, o) {
+        $trigger = $(t);
+        options = $.extend(options, o);
         
-        // Do initial check if the user has already passed threshold
-        monitor();
+        this.bind(options.events);
+        
+        enableMonitor.call(this);
+        
+        return this;
     };
-    
-    var disable = function() {
-        $(window).unbind('scroll', monitor);
+
+    var enableMonitor = function() {
+        $(window).bind('scroll', $.proxy(monitor, this));
+        
+        monitor.call(this);
     };
-    
+
+    var disableMonitor = function() {
+        $(window).unbind('scroll', $.proxy(monitor, this));
+    };
+
     var monitor = function(event) {
         if (isTriggered(event)) {
-            disable();
-            loadNext();
+            loadNext.call(this);
         };
     };
-    
+
     var isTriggered = function(event) {
-        if ($.isFunction(options.trigger)) {
-            return options.trigger.call(next, event);
-        }
+        if ($.isFunction(options.threshold)) {
+            return options.threshold.call($trigger, event);
+        };
         
-        var w = $(window);
-        var progress = w.scrollTop() + w.height();
+        var $window     = $(window);
+        var progress    = $window.scrollTop() + $window.height();
         
-        switch (typeof options.trigger) {
-            // If trigger is a selector
+        switch (typeof options.threshold) {
+            // If threshold is a selector
             case 'string':
-                // Determine trigger's offset
-                var threshold = $(options.trigger).offset().top;
+                // Determine threshold's offset
+                var offset = $(options.threshold).offset().top;
                 
                 break;
-
+            
             default:
-                // Trigger based on scale & offset depends on body height
+                // Threshold based on scale & offset depends on body height
                 var height = $('body').innerHeight();
                 
-                // If trigger is proportionate to body height...
-                if (options.trigger > 0 && options.trigger <= 1) {
-                    var threshold = height * options.trigger;
-                } else {
-                    var threshold = height - options.trigger;
-                }
+                var offset = (options.threshold > 0 && options.threshold <= 1)
+                           ? height * options.threshold // Threshold is a percentage
+                           : height - options.threshold // Threshold is distance from bottom;
                 
                 break;
         }
         
-        return (progress >= threshold) ? true : false;
+        return (progress >= offset) ? true : false;
     };
-    
+
     var loadNext = function() {
+        disableMonitor.call(this);
+        
         // Call request hook
-        options.request.call(next, options);
+        this.trigger('request');
         
         // Format url as "?page=1 div#wrapper div.post"
-        var url = [next.attr('href'), options.container, options.filter].join(' ');
+        var url = [
+            $trigger.attr('href'),
+            options.container,
+            options.filter
+        ].join(' ');
         
-        // Create a wrapper div, as we're appending content
-        jQuery('<div />').hide()
-                         .appendTo(options.container)
-                         .load(url, loaded);
+        // GET next page
+        $.get(
+            $trigger.attr('href'),
+            $.proxy(loaded, this)
+        );
     };
-    
+
     var loaded = function(responseText, status, event) {
-        // Reveal content
-        options.effect.call(this);
+        // Narrow down content
+        var $content = $(this.selector, responseText);
         
-        // Re-assign current "Next" link
-        next = $("<div />").append(responseText.replace(/<script(.|\s)*?\/script>/g, ""))
-                           .find(next.selector);
+        if (options.filter) {
+            $content = $content.find('*').filter(options.filter);
+        };
+        
+        // Hide & append to container
+        this.append($content.hide());
+        
+        // Re-assign trigger to next one
+        $trigger = $($trigger.selector, responseText);
+        
+        // Fade in content
+        options.effect.call($content);
         
         // Call success hook
-        options.success.apply(next, [event, options]);
+        this.trigger('success');
         
-        // Monitor window scrolling
-        enable();
+        // Enable monitor (after delay)
+        setTimeout($.proxy(enableMonitor, this), options.delay);
     };
         
 })(jQuery);
