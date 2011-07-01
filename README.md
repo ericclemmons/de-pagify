@@ -10,11 +10,7 @@ The latest code & documentation will *always* be available at
 but is also available at
 [http://plugins.jquery.com/project/de-pagify](http://plugins.jquery.com/project/de-pagify)
 
----
-
 ## [Infinite Scroll Demo][demo]
-
----
 
 ## Usage
 
