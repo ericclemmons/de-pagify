@@ -6,12 +6,15 @@ De-pagify let's you easily enable [endless scroll][el] for paged sites such as
 or similar link.
 
 The latest code & documentation will *always* be available at
-<a href="http://github.com/ericclemmons/de-pagify">http://github.com/ericclemmons/de-pagify</a>,
+[http://github.com/ericclemmons/de-pagify](http://github.com/ericclemmons/de-pagify),
 but is also available at
-<a href="http://plugins.jquery.com/project/de-pagify">http://plugins.jquery.com/project/de-pagify</a>.
+[http://plugins.jquery.com/project/de-pagify](http://plugins.jquery.com/project/de-pagify)
 
+---
 
-## [View Demo][demo]
+## [Infinite Scroll Demo][demo]
+
+---
 
 ## Usage
 
