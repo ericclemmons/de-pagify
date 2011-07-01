@@ -1,7 +1,7 @@
 /*
     Script:         depagify.jquery.js
     Author:         eric@uxdriven.com
-    Version:        2.0
+    Version:        2.0.1
     Repository:     http://github.com/ericclemmons/de-pagify
     
     Copyright (c) 2011 Eric Clemmons
@@ -97,6 +97,11 @@
 
     var loadNext = function() {
         disableMonitor.call(this);
+        
+        // Skip if no more pages are found
+        if (! $trigger.length) {
+            return false;
+        };
         
         // Call request hook
         this.trigger('request');

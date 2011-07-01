@@ -73,7 +73,8 @@
 
             <div id="pages">
                     <strong><?= $page ?></strong>
-                    <a href="?<?= ++$page ?>">Next &raquo;</a>
+                    
+                    <?php if ($page < 10) : ?><a href="?<?= ++$page ?>">Next &raquo;</a><?php endif; ?>
                 </script>
             </div>
         </div>
