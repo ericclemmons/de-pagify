@@ -98,6 +98,11 @@
     var loadNext = function() {
         disableMonitor.call(this);
         
+        // Skip if no more pages are found
+        if (! $trigger.length) {
+            return false;
+        };
+        
         // Call request hook
         this.trigger('request');
         
