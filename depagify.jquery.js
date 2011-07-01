@@ -87,7 +87,7 @@
                 
                 var offset = (options.threshold > 0 && options.threshold <= 1)
                            ? height * options.threshold // Threshold is a percentage
-                           : height - options.threshold // Threshold is distance from bottom;
+                           : height - options.threshold;// Threshold is distance from bottom;
                 
                 break;
         }
