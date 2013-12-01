@@ -58,3 +58,7 @@ If you can help in any way, please fork this project or provide feedback.
 [jq]:   http://www.learningjquery.com/2009/04/better-stronger-safer-jquerify-bookmarklet "jQuerify"
 [dpbm]: https://github.com/ericclemmons/de-pagify/raw/master/bookmarklet.jquery.min.js
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ericclemmons/de-pagify/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
